@@ -33,10 +33,6 @@ para descubrir el puerto abierto por udp he utilizado el comando.
 sudo nmap -PU ip_machine -p-
 ```
 
-![scan udp.png](attachment:589fa9e3-a0ae-45bf-897a-fe20f0340705:scan_udp.png)
-
----
-
 ---
 
 ¿Qué tiempo de vida (TTL) tiene el puerto UDP en nuestro host?
@@ -49,10 +45,6 @@ he utilizado el comando:
 sudo nmap -PP -sn ip_machine
 ```
 
-![ping icmp.png](attachment:2dffc64b-29c9-456e-9743-45b8fb24a22f:61fc954b-2b8f-4186-9a4a-13d3d7169f9d.png)
-
----
-
 ---
 
 ¿Qué puerto tiene corriendo el servicio domain?
@@ -64,10 +56,6 @@ he usado el comando grande de Nmap:
 ```bash
 sudo nmap -A -sV -vv -sC 10.10.243.162 -oX informe_nmap.xml --stylesheet "https://raw.githubusercontent.com/honze-net/nmap-bootstrap-xsl/master/nmap-bootstrap.xsl" -p-
 ```
-
-![nmap.png](attachment:b1a86b9a-c9d9-47f4-8e14-533bff4a91ed:nmap.png)
-
----
 
 ---
 
@@ -298,7 +286,7 @@ etc/host
 admin.nebula.io  ip_machine
 ```
 
-al inspeccionar la pagina de [admin.nebula.io](http://admin.nebula.io) he encontrado un archivo.zip que he procedido a descargármelo y descomprimirlo, en este se encontraba un archivo con un texto cifrado el cual lo copie y lo he pegado en una pagina de descifrado el cual me dio como resultado el numero: 
+al inspeccionar la pagina de [admin.nebula.io] he encontrado un archivo.zip que he procedido a descargármelo y descomprimirlo, en este se encontraba un archivo con un texto cifrado el cual lo copie y lo he pegado en una pagina de descifrado el cual me dio como resultado el numero: 
 
 al introducir el pin ingreso aun apartado en el cual se parece a un Siem en el cual tengo que responder algunas preguntas.
 
@@ -310,37 +298,34 @@ al introducir el pin ingreso aun apartado en el cual se parece a un Siem en el c
 
 la ip que ha generado la alerta es: 143.110.250.149 
 
-![ip que genero la alerta y su puerto.png](attachment:e4b9dfe5-2161-4006-81e6-3605c471cc6f:ip_que_genero_la_alerta_y_su_puerto.png)
+---
 
 ¿Cuál es su ISP?
 
 su ISP es: **China Mobile communications Corporation**
 
-![isp de la amenaza.png](attachment:8f75c128-3ee6-4565-848b-7c031b5a75fd:isp_de_la_amenaza.png)
+---
 
 ¿Cómo se llama el Ejecutivo de ventas?
 
 el ejecutivo de ventas se llama **Joan Ribas**
 
-![ejecutivo de ventas.png](attachment:0f46ee7f-4d04-489c-b6ab-25b830f24a8f:ejecutivo_de_ventas.png)
+---
 
 ¿Qué IP fue añadida a la lista negra el 30 de Junio de 2024?
 
 fue añadida la ip: **212.38.99.12**
 
-![ip añadida lista negra.png](attachment:9c04eef6-b190-40a3-a9c1-d515a2e7ba53:ip_aadida_lista_negra.png)
+---
 
 ¿Cuál ha sido el resultado?
 
 GFCS{ANALISTA-LEVEL-1}
 
-![flag bloqueando ip.png](attachment:63e06624-959a-40a1-96e2-7b75a8f54c34:flag_bloqueando_ip.png)
+---
 
 ¿Cuál es la FLAG?
-
-![flag respondiendo las preguntas.png](attachment:320469e2-e516-4b86-99ea-167dbf790478:flag_respondiendo_las_preguntas.png)
-
----
+FLAG{GOOD-J08!}
 
 ---
 
@@ -351,8 +336,7 @@ después de realizar el reto del siem nos ha dado una lista de posibles contrase
 ```bash
 hydra -L  bluffer -P nebula.txt -t12 ssh://10.10.227.92:1986
 ```
-
-![usuario y passw con hydra.png](attachment:c4dd8811-7d97-4007-b85b-83f6ea389dd8:usuario_y_passw_con_hydra.png)
+---
 
 ¿Por qué puerto te has conectado?
 
@@ -370,7 +354,7 @@ al conectarme al puerto ssh con el usuario y contraseña llego a una shell la cu
 
 hay instrucciones de usar algunos comandos, START_BLUFFER activaba un juego y otro comando dice OPEN_SMB al escribir esto en la shell y dar intro procede a activar el servicio SMB
 
-![ya dentro.png](attachment:ccde575a-1ced-4881-b97c-5bf34f0cd63b:ya_dentro.png)
+---
 
 al hacer un Nmap descubro que el servicio que se ha activado corre en el puerto **44544** el servicio es samba el cual tiene una vulnerabilidad la cual tiene un **9,8  su CVE-2017-7494** fue descubierta en 2017 y es conocida como SambaCry.
 
@@ -419,7 +403,7 @@ el hash para el usuario de root es:
 root:$6$dTV9ZkDw$ZULnb36XSMz1fv4LzsGXZnq7FpRx3H6v3CUmD/iySvY4M/9lzVGUVv81ChJsasATlegYJLib8Ciw1/fowpi2s0
 ```
 
-![usuarios con hash.png](attachment:ac6b2510-5c99-469d-a274-5c4cb35f5e45:usuarios_con_hash.png)
+---
 
 ---
 
@@ -427,7 +411,6 @@ la persona que gestiona el usuario guakamole se llama **David Kline**
 
 y el usuario que reporta los errores del sistema se llama **Gnats**
 
-![usuario bug y guakamole.png](attachment:e8288e84-6893-4d15-85bc-8f5e9ce502c6:usuario_bug_y_guakamole.png)
 
 ---
 
@@ -439,4 +422,4 @@ he introducido el hash a un archivo.txt y he usado el comando de John the Ripper
 john --wordlist=/usr/share/wordlists/rockyou.txt pass.txt
 ```
 
-![guacamole clave.png](attachment:f83d2e40-6a2c-47f0-bd5a-dca94c83ad05:guacamole_clave.png)
+
